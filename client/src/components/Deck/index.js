@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Draw from "../Draw/index";
 import Discard from "../Discard/index";
@@ -32,21 +32,15 @@ export default function Deck() {
     const monstersGState = useSelector(state => state.monsters);
     const statsGState = useSelector(state => state.stats);
     const { round, totalRounds } = statsGState;
-    // console.log(round)
     const dispatch = useDispatch();
-    // const monsterHealthArmor = dispatch(setMonsterHealthArmor)
-    // console.log(monstersGState[0].filter(monster => monster.order === playerGState.battleNumber))
-    // console.log(monstersGState)
-    // let doop = monstersGState[0].filter(monster => monster.order === playerGState.battleNumber)[0]
-    // console.log(doop)
+    
     const Doop = new Monster(monsterGState);
-    const Choop = new Player(playerGState, playerGState.cards);
+    const Choop = new Player(playerGState);
+
     const [playerState, setPlayerState] = useState({
         Choop,
         spell: ""
     })
-    // console.log(Doop)
-    // console.log(Choop)
 
     const waitAnimation = (animation, nextFunc) => {
         let timer = 1000;

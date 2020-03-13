@@ -18,7 +18,7 @@ import {
     setPlayer,
     setAllMonsters,
     setMonster,
-    setHealthArmor
+    setHealthArmor,
   } from "../../actions/gameActions";
 ////Sprites////
 import Sprite from "../../sprites/getSprite.js";
@@ -72,11 +72,6 @@ const Landing = (props) => {
             .then(res => {
                 // Update the global state here
                 dispatch(setAllMonsters(res.data)) 
-                let monster = res.data.filter(monster => monster.order === battleNumber)[0];
-                // database is wrong
-                // console.log(res.data)
-                // We set the initial monster
-                dispatch(setMonster(monster))
             })
             // .catch(err => console.log(err));
     };

@@ -19,10 +19,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { 
     resetStatsRound,
-    setHealthArmor,
-    setBattleNumber,
-    setMonsterAnimation,
-    setMonsterSprite
+    setBattleNumber
 } from "../../actions/gameActions";
 // Our imports
 import CharacterCard from "../../components/Character_Card";
@@ -79,13 +76,13 @@ const DungeonFight = props => {
 
     const textColor = () => {
         let num = stats.playerTurnDamage
-        console.log("This Stuff", num)
+        // console.log("This Stuff", num)
         num = num / 50
-        console.log("This Stuff", num)
+        // console.log("This Stuff", num)
         num = 1 - num
-        console.log("This Stuff", num)
+        // console.log("This Stuff", num)
         num = num * 100
-        console.log("This Stuff", num)
+        // console.log("This Stuff", num)
         const x = 'hsl(0, 100%, '+num+'%)'
         return x
     }
@@ -130,8 +127,6 @@ const DungeonFight = props => {
                     <Grid item xs={4}>
                         <CharacterCard
                             character="player"
-                            // characterState={playerState}
-                            animation={"idle"}
                         ></CharacterCard>
                     </Grid>
                     <Grid item xs={2}>
@@ -139,11 +134,10 @@ const DungeonFight = props => {
                         <h3 id='damageNumber' style={damageStyles}>{stats.playerTurnDamage}</h3>  
                         : ""}
                     </Grid>
-                    <Grid item xs={4} direction="column" justify="flex-end" alignItems="center">
+                    <Grid item xs={4} >
                         {/* Figure this out */}
                         <CharacterCard
                             character="monster"
-                            intention={"ADD ME"}
                         ></CharacterCard>
                     </Grid>
                 </Grid>

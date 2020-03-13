@@ -38,8 +38,12 @@ const MonsterSchema = new Schema({
         type: Number,
         required: true,
     },
-    order: {
+    battleNumber: {
         type: Number,
+        required: true,
+    },
+    sprite: {
+        type: {},
         required: true,
     },
 });

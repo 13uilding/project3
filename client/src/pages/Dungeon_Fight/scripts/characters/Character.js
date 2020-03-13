@@ -1,27 +1,27 @@
 //! Store somewhere else?
-var statusObj = {
-    heal: 0,
-    harden: 0,
-    retaliate: 0,
-    sharpen: 0,
-    toughen: 0,
-}
+// var initModifiers = {
+//     heal: 0,
+//     harden: 0,
+//     retaliate: 0,
+//     sharpen: 0,
+//     toughen: 0,
+// }
 
 class Character {
-    constructor( name, health, armor, totalHealth, totalArmor, status=statusObj, 
-        round=1, attacking=false, defending=false, idle=true, alive=true) {
-        this.health = health;
+    constructor( alive, animation, armor, battleNumber, health, modifiers, name, round, sprite, totalHealth, totalArmor ) {
+        // Character information
+        this.alive = alive;
         this.armor = armor;
-        this.totalHealth = totalHealth;
-        this.totalArmor = totalArmor;
-        this.name = name;
-        // Used for react state and animation manipulation
-        this.attacking = attacking;
-        this.defending = defending;
-        this.idle = idle;
-        this.alive = true;
-        this.status = status;
+        this.health = health;
         this.round = round;
+        this.modifiers = modifiers;
+        this.totalArmor = totalArmor;
+        this.totalHealth = totalHealth;
+        // Used for react state and animation manipulation
+        this.animation = animation
+        this.name = name;
+        this.battleNumber = battleNumber;
+        this.sprite = sprite;
     }
 }
 Character.prototype.defend = function([damage, type]) {

@@ -4,10 +4,10 @@ import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
 import monsterReducer from "./monsterReducer";
 import monsterAnimationReducer from "./monsterAnimationReducer";
-import monsterSpriteReducer from "./monsterSpriteReducer";
+// import monsterSpriteReducer from "./monsterSpriteReducer";
 import playerReducer from "./playerReducer";
 import playerAnimationReducer from "./playerAnimationReducer";
-import playerSpriteReducer from "./playerSpriteReducer";
+// import playerSpriteReducer from "./playerSpriteReducer";
 import statsReducer from "./statsReducer";
 
 export default combineReducers({
@@ -16,9 +16,9 @@ export default combineReducers({
     errors: errorReducer,
     monster: monsterReducer,
     monsterAnimation: monsterAnimationReducer,
-    monsterSprite: monsterSpriteReducer,
+    // monsterSprite: monsterSpriteReducer,
     player: playerReducer,
     playerAnimation: playerAnimationReducer,
-    playerSprite: playerSpriteReducer,
+    // playerSprite: playerSpriteReducer,
     stats: statsReducer
 });

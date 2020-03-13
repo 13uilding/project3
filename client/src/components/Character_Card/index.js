@@ -30,11 +30,10 @@ const useStyles = makeStyles({
 
 export default function CharacterCard(props) {
     const classes = useStyles();
-    // console.log(props)
-    const { character, type } = useSelector(state => state[props.character + "Sprite"])
+    console.log(props)
+    const { character, type } = useSelector(state => state[props.character].sprite)
     const playerAnimation = useSelector(state => state.playerAnimation);
     const monsterAnimation = useSelector(state => state.monsterAnimation);
-    // const display = (props.character === "player") ?: 100, armor: 50, totalArmor: 150 })
     return (
         <div className={classes.root} >
             <Grid
@@ -49,6 +48,7 @@ export default function CharacterCard(props) {
                     <Sprite
                         character={character}
                         type={type}
+                        animation={character === "player" ? playerAnimation : monsterAnimation}
                     />
                 </div>
                 {/* Use the state in place of the player.armor */}

@@ -38,11 +38,11 @@ export default function HealthArmorBars(props) {
       <div className="bars">
         <ArmorLinearProgress
         variant="determinate"
-        value={`${Math.round(parseInt(armor) / parseInt(totalArmor) * 100)}`}
+        value={Math.round(armor / totalArmor * 100)}
         />
         <HealthLinearProgress
         variant="determinate"
-        value={`${Math.round(parseInt(health) / parseInt(totalHealth) * 100)}`}
+        value={Math.round(parseInt(health) / parseInt(totalHealth) * 100)}
         />
       </div>
     );

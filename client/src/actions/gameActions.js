@@ -20,20 +20,30 @@ import {
     UPDATE_PLAYER_ARMOR
 } from "./types";
 
-//! Use this action on landing
-export const setPlayer = (player) => {
-    return {
-        //! This should do an axios update ran on the loot page
-        type: SET_PLAYER, 
-        payload: player
-    }
-} 
 //! Use this action on the loot page
 export const setCards = (cards) => {
     return {
         //! This should do an axios update ran on the loot page
         type: SET_CARDS, 
         payload: {cards}
+    }
+} 
+
+// HEALTH ARMOR ACTIONS PLAYER
+export const setHealthArmor = (health, armor, alive) => {
+    // PLAYER should be the name of the class, value should be the updated health object
+    return {
+        type: SET_PLAYER_HEALTH_ARMOR, 
+        payload: {health, armor, alive}
+    }
+};
+
+//! Use this action on landing
+export const setPlayer = (player) => {
+    return {
+        //! This should do an axios update ran on the loot page
+        type: SET_PLAYER, 
+        payload: player
     }
 } 
 export const setPlayerAnimation = (animation) => {
@@ -48,14 +58,7 @@ export const setPlayerSprite = (character, type) => {
         payload: { character, type }
     }
 }
-// HEALTH ARMOR ACTIONS PLAYER
-export const setHealthArmor = (health, armor, alive) => {
-    // PLAYER should be the name of the class, value should be the updated health object
-    return {
-        type: SET_PLAYER_HEALTH_ARMOR, 
-        payload: {health, armor, alive}
-    }
-};
+
 // updating armor from lootpage
 export const updateTotalHealth = value => {
     // PLAYER should be the name of the class, value should be the updated health object
@@ -72,14 +75,27 @@ export const updateTotalArmor = value => {
         payload: {value}
     }
 };
-// Battle number determines which monster to fight and how many are dead
-//! Use this action on the loot page
-export const setBattleNumber = (number) => {
-    return { type: SET_BATTLE_NUMBER, payload: {number} }
+
+
+//!
+// SET ALL MONSTERS
+export const setAllMonsters = (monsters) => {
+    return { type: SET_ALL_MONSTERS, monsters }
 }
-//! Use this action on the game over page
-export const resetBattleNumber = () => {
-    return { type: RESET_BATTLE_NUMBER }
+
+export const setMonster = (monster) => {
+    // battleNumber should be the name of the class, value should be the updated health object
+    return {
+        type: SET_MONSTER, 
+        payload: monster
+    }
+};
+
+export const setMonsterAnimation = (animation) => {
+    return {
+        type: SET_MONSTER_ANIMATION,
+        payload: { animation }
+    }
 }
 // HEALTH ARMOR ACTIONS MONSTER
 export const setMonsterHealthArmor = (health, armor, alive) => {
@@ -89,29 +105,15 @@ export const setMonsterHealthArmor = (health, armor, alive) => {
         payload: { health, armor, alive }
     }
 };
-export const setMonster = ({health, armor, alive, order, totalHealth, totalArmor, monster, name, damage, sequence}) => {
-    // battleNumber should be the name of the class, value should be the updated health object
-    return {
-        type: SET_MONSTER, 
-        payload: {health, armor, alive, order, totalHealth, totalArmor, monster, name, damage, sequence}
-    }
-};
-// SET ALL MONSTERS
-export const setAllMonsters = (monsters) => {
-    return { type: SET_ALL_MONSTERS, monsters }
-}
-export const setMonsterAnimation = (animation) => {
-    return {
-        type: SET_MONSTER_ANIMATION,
-        payload: { animation }
-    }
-}
+// needed?
 export const setMonsterSprite = (character, type) => {
     return {
         type: SET_MONSTER_SPRITE,
         payload: { character, type }
     }
 }
+
+
 // Stats
 export const resetStatsRound = () => {
     return {
@@ -139,4 +141,16 @@ export const setStatsRound = () => {
     return {
         type: SET_STATS_ROUND
     }
+}
+
+
+
+// Battle number determines which monster to fight and how many are dead
+//! Use this action on the loot page
+export const setBattleNumber = (number) => {
+    return { type: SET_BATTLE_NUMBER, payload: {number} }
+}
+//! Use this action on the game over page
+export const resetBattleNumber = () => {
+    return { type: RESET_BATTLE_NUMBER }
 }

@@ -1,85 +1,55 @@
 import Character from "./Character"
 
-//! Store spellsObj, cards, and playerCards somewhere else?
-// Cards Bank: ALL THE POSSIBLE CARDS (REPLACE WITH DATABASE)
-const cards = ["r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"]
-// Player cards: INITIAL CARDS (WHEN YOU CREATE NEW GAME)
-var playerCards = [...cards.slice(0, 5), ...cards.slice(10, 15), ...cards.slice(20, 25)];
-// Object of spells to initialize with Player
 const spellsObj = {
-    heal: () => {
-        // console.log("healing")
-        // this.status["heal"] += 1;
-        return "heal"
-    },
-    harden: () => {
-        // console.log("hardening")
-        // this.status["harden"] += 1;
-        return "harden"
-    },
-    sharpen: () => {
-        // console.log("sharpening")
-        // this.status["sharpen"] += 1;
-        return "sharpen"
-    },
-    jackpot: () => {
-        // console.log("Hit the jackpot")
-        return "jackpot"
-    },
-    toughen: () => {
-        // console.log("toughening")
-        // this.status["toughen"] += 1;
-        return "toughen"
-    },
-    cut: () => {
-        // console.log("paper cut")
-        return "cut"
-    },
-    tank: () => {
-        // console.log("tanking")
-        return "tank"
-    },
-    retaliate: () => {
-        // console.log("hi")
-        // this.status["retaliate"] += 1;
-        return "retaliate"
-    },
-    desolate: () => {
-        // console.log("hi")
-        return "desolate"
-    },
-    slice: () => {
-        // console.log("hi")
-        return "slice"
-    }
+        heal: () => {
+            return "heal"
+        },
+        harden: () => {
+            // this.modifiers.defend.harden += 1;
+            return "harden"
+        },
+        sharpen: () => {
+            // this.modifiers.defend.sharpen += 1;
+            return "sharpen"
+        },
+        jackpot: () => {
+            return "jackpot"
+        },
+        toughen: () => {
+            // this.modifiers.defend.toughen += 1;
+            return "toughen"
+        },
+        cut: () => {
+            return "cut"
+        },
+        tank: () => {
+            return "tank"
+        },
+        retaliate: () => {
+            return "retaliate"
+        },
+        desolate: () => {
+            return "desolate"
+        },
+        slice: () => {
+            return "slice"
+        }
 }
 
-
-// Need to add player methods
 class Player extends Character {
     // These are the initial values that a player starts with
     // Turn this into an object
-    constructor({ alive, health=50, armor=25, totalHealth=50, totalArmor=25, battleNumber=0}, cards=playerCards, name="Choop", status=[],
-        discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj,
-        attacking, defending, idle, round, harden = 0, sharpen=0, toughen=0) {
-        super(name, health, armor, totalHealth, totalArmor, status,
-            attacking, defending, idle, alive, round)
+    constructor({ alive, animation, armor, battleNumber, cards, discardDeck, drawDeck, hand, health, modifiers, 
+        name, numDraw, round, selectedCards, spells=spellsObj, sprite, totalArmor, totalHealth }) {
+        super( alive, animation, armor, battleNumber, health, modifiers, name, round, sprite, totalHealth, totalArmor )
         // Current cards the player has
         this.cards = cards;
         this.discardDeck = discardDeck;
         this.drawDeck = drawDeck;
         this.hand = hand;
         this.selectedCards = selectedCards;
-        // Number of cards a player draws
-        this.battleNumber = battleNumber;
         this.numDraw = numDraw;
-        // Spells and status corresponding to the player
         this.spells = spells;
-        this.status = status;
-        this.harden = harden;
-        this.sharpen = sharpen;
-        this.toughen = toughen;
-
     }
     attack(type, powerUps) {
         // Refactor

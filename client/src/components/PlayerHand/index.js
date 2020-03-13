@@ -29,7 +29,6 @@ export default function PlayerHand({ set, player }) {
 
     const select = e => {
         const cardId = e.currentTarget.id
-        dispatch(setStatsPlayerDamage(0))
         // console.log(cardId);
         let spell = "";
         let cards = player.Choop.selectedCards
@@ -50,10 +49,8 @@ export default function PlayerHand({ set, player }) {
             spell = player.Choop.determineSpell()
             let damage = player.Choop.attack(spell)[0]
             dispatch(setStatsPlayerDamage(damage))
-            // Update the global variable for attack damage
-            // console.log(spell);
+            set({ ...player, spell });
         }
-        set({ ...player, spell });
     }
 
     const getCardSprites = (card) => {

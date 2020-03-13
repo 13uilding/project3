@@ -27,18 +27,18 @@ const storyLine = [
 
 const MapPage = (props) => {
     const monsters = useSelector(state => state.monsters[0]);
-    const { character, type } = useSelector(state => state.monsterSprite);
+    const { character, type } = useSelector(state => state.monster.sprite);
     const battleNumber = useSelector(state => state.player.battleNumber);
     const dispatch = useDispatch();
     // console.log(battleNumber);
     const story = storyLine[battleNumber]
     useEffect(() => {
         // console.log(monsters)
-        let newMonster = monsters.filter(monster => monster.order === battleNumber)[0]
+        let newMonster = monsters.filter(monster => monster.battleNumber === battleNumber)[0]
         // if newMonster
         // console.log(newMonster);
         dispatch(setMonster(newMonster));
-        dispatch(setMonsterSprite(newMonster.animation.character, newMonster.animation.type))
+        dispatch(setMonsterSprite())
     }, [battleNumber])
     
     
